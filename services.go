@@ -7,20 +7,20 @@ import (
 
 // StringService provides operations on strings.
 type StringService interface {
-	Uppercase(context.Context, string) (string, error)
-	Count(context.Context, string) int
+	Uppercase(string) (string, error)
+	Count(string) int
 }
 
 type stringService struct{}
 
-func (stringService) Uppercase(_ context.Context, s string) (string, error) {
+func (stringService) Uppercase(s string) (string, error) {
 	if s == "" {
 		return "", ErrEmpty
 	}
 	return strings.ToUpper(s), nil
 }
 
-func (stringService) Count(_ context.Context, s string) int {
+func (stringService) Count(s string) int {
 	return len(s)
 }
 
